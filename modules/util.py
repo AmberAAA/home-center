@@ -10,12 +10,11 @@ def post(url, data, method="POST"):
         try:
             request = urllib.request.Request(url, data=post_data, method=method)
             response = urllib.request.urlopen(request)
-            break
+            return response.read().decode('utf-8')
         except:
             if tries < (max_try_num - 1) :
                 continue
             else:
                 print("post failed!")
                 break
-    return response.read().decode('utf-8')
 
